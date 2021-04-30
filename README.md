@@ -35,3 +35,8 @@
 - Testes unitários em Java (Junit) testando a solução cobrindo um bom número de cenários
 
 - Entregar a solução por email com um zip ou colocar o código num repositório remoto como Github, Gitlab etc.
+
+
+## H2 WEB
+
+- http://localhost:8080/auction/h2-console
