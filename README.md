@@ -37,6 +37,24 @@
 - Entregar a solução por email com um zip ou colocar o código num repositório remoto como Github, Gitlab etc.
 
 
+## POST INSERT BID
+
+- http://localhost:8080/auction/auction-bid
+```
+{
+    "name": "teste insert winner",
+    "value": "0.3"
+}
+```
+
+## GET BID WINNER BD
+
+- http://localhost:8080/auction/lower-bid-db
+
+## GET BID WINNER MAP
+
+- http://localhost:8080/auction/lower-bid-map
+
 ## H2 WEB
 
 - http://localhost:8080/auction/h2-console
