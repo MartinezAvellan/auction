@@ -18,10 +18,28 @@ import br.com.quarktech.auction.exceptions.TwoDecimalBidAuctionException;
 import br.com.quarktech.auction.interfaces.AuctionServiceInterface;
 
 @SpringBootTest
-class AuctionBidTestExceptionsTests {
+class ATest {
 
 	@Autowired
 	private AuctionServiceInterface auctionService;
+
+	
+	@Test
+	void testIFBidNotFoundMap() {
+		BidNotFoundException e = assertThrows(BidNotFoundException.class, () -> {
+			auctionService.getBidWinnerMap();
+		}, "Expected not found in map to throw, but it didn't");
+		assertTrue(AuctionConstants.BID_NOT_FOUND, e.getMessage().contains(AuctionConstants.BID_NOT_FOUND));
+	}
+	
+	@Test
+	void testIFBidNotFoundDB() throws InterruptedException {
+		BidNotFoundException e = assertThrows(BidNotFoundException.class, () -> {
+			auctionService.getBidWinnerDB();
+		}, "Expected not found in DB to throw, but it didn't");
+		assertTrue(AuctionConstants.BID_NOT_FOUND, e.getMessage().contains(AuctionConstants.BID_NOT_FOUND));
+	}
+
 	
 	@Test
 	void testFildsNull() {
@@ -56,20 +74,4 @@ class AuctionBidTestExceptionsTests {
 		assertTrue(AuctionConstants.BID_TWO_DECIMAIS, e.getMessage().contains(AuctionConstants.BID_TWO_DECIMAIS));
 	}
 	
-	@Test
-	void testIFBidNotFoundMap() {
-		BidNotFoundException e = assertThrows(BidNotFoundException.class, () -> {
-			auctionService.getBidWinnerMap();
-		}, "Expected not found in map to throw, but it didn't");
-		assertTrue(AuctionConstants.BID_NOT_FOUND, e.getMessage().contains(AuctionConstants.BID_NOT_FOUND));
-	}
-	
-	@Test
-	void testIFBidNotFoundDB() throws InterruptedException {
-		BidNotFoundException e = assertThrows(BidNotFoundException.class, () -> {
-			auctionService.getBidWinnerDB();
-		}, "Expected not found in DB to throw, but it didn't");
-		assertTrue(AuctionConstants.BID_NOT_FOUND, e.getMessage().contains(AuctionConstants.BID_NOT_FOUND));
-	}
-
 }
